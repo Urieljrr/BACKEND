@@ -7,8 +7,10 @@ usersCtrl.getUsers = async  (req, res) =>{
     res.json(users);
 }
 
-usersCtrl.createUser = function(){
-    
+usersCtrl.createUser = async (req, res) =>{
+    const user = new User(req.body);
+    await user.save();
+    res.json('Recibido');
 }
 
 
